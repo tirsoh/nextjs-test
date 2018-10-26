@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "babel-loader": "^8.0.4",
+    "marked": "0.5.1",
     "next": "^7.0.2",
     "postcss-preset-env": "^6.2.0",
     "react": "^16.6.0",
