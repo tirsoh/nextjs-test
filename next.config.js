@@ -15,7 +15,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             babelrc: false,
-            extends: path.resolve(__dirname, './.babelrc')
+            extends: path.resolve(__dirname, './babel.config.js')
           }
         },
         'styled-jsx-css-loader'

@@ -21,8 +21,8 @@ export default ({
       }`}
       data-ga-button={`${ga_prefix ? ga_prefix + ' | ' : ''}${gaSlug}`}
       href={url}
-      rel={ext && 'noopener' }
-      target={ext && '_blank' }
+      rel={ext ? 'noopener' : undefined}
+      target={ext ? '_blank' : undefined}
       {...additionalProps}
     >
       <style jsx>{styles}</style>
