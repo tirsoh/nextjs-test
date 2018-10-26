@@ -1,11 +1,11 @@
- {
+.g-btn {
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   line-height: 1.375rem;
   border: 0;
   border-style: solid;
   border-radius: 2px;
-  background-color: #1563ff;
+  background-color: var(--defaultBlue);
   color: #fff;
   cursor: pointer;
   display: inline-block;
