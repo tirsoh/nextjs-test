@@ -1,12 +1,12 @@
 .g-btn {
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--open-sans-font);
   font-size: 1rem;
   line-height: 1.375rem;
   border: 0;
   border-style: solid;
   border-radius: 2px;
-  background-color: var(--defaultBlue);
-  color: #fff;
+  background-color: var(--default-blue);
+  color: var(--white);
   cursor: pointer;
   display: inline-block;
   outline: 0;
@@ -18,6 +18,7 @@
   align-self: center;
   box-sizing: border-box;
   appearance: none;
+  text-decoration: none;
 
   &::after {
     content: '';
@@ -44,6 +45,76 @@
 
     &:hover {
       transform: unset;
+    }
+  }
+
+  &.light-fill {
+    background-color: var(--white);
+    color: var(--black);
+
+    &:hover {
+      background-color: var(--black);
+      color: var(--white);
+    }
+  }
+
+  &.dark-fill {
+    background-color: var(--black);
+    color: var(--white);
+
+    &:hover {
+      background-color: var(--white);
+      color: var(--black);
+    }
+  }
+
+  &.light-outline {
+    background: none;
+    border: 1px solid var(--white);
+    padding: 12px 23px; /* subtracting the border, so sizes are even */
+    color: var(--white);
+
+    &:hover {
+      background-color: var(--white);
+      color: var(--black);
+    }
+  }
+
+  &.dark-outline {
+    background: none;
+    border: 1px solid var(--black);
+    padding: 12px 23px; /* subtracting the border, so sizes are even */
+    color: var(--black);
+
+    &:hover {
+      background-color: var(--black);
+      color: var(--white);
+    }
+  }
+
+  &.light-arrow-link {
+    background: none;
+    border: none;
+    color: white;
+    position: relative;
+    padding: 0 0 2px 0;
+    transition: none;
+
+    &::before {
+      content: '\203A';
+      position: absolute;
+      right: -20px;
+    }
+
+    &:hover {
+      background: none;
+      transform: unset;
+      padding: 0 0 1px 0;
+      border-bottom: 1px solid gray;
+
+      &::after {
+        opacity: 0;
+      }
     }
   }
 }
