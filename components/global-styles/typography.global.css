@@ -1,0 +1,246 @@
+/* Display 1 */
+.g-type-display-1 {
+  font-family: var(--klavika-font);
+  font-weight: 300;
+  font-size: 2.125em;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+
+  @media (min-width: 768px) {
+    font-size: 2.5em;
+  }
+
+  @media (min-width: 1120px) {
+    font-size: 3.5em;
+  }
+}
+
+.g-type-display-1.strong {
+  font-weight: 600;
+}
+
+/* Display 2 */
+.g-type-display-2 {
+  font-family: var(--klavika-font);
+  font-weight: 300;
+  font-size: 1.875em;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+
+  @media (min-width: 768px) {
+    font-size: 2.25em;
+  }
+
+  @media (min-width: 1120px) {
+    font-size: 3em;
+  }
+}
+
+.g-type-display-2.strong {
+  font-weight: 600;
+}
+
+/* Section 1 */
+.g-type-section-1 {
+  font-family: var(--open-sans-font);
+  font-weight: 300;
+  font-size: 1.5em;
+  line-height: 1.4;
+
+  @media (min-width: 768px) {
+    font-size: 2em;
+  }
+
+  @media (min-width: 1120px) {
+    font-size: 2.125em;
+  }
+}
+
+/* Section 2 */
+.g-type-section-2 {
+  font-family: var(--open-sans-font);
+  font-weight: 300;
+  font-size: 1.3125em;
+  line-height: 1.5;
+
+  @media (min-width: 768px) {
+    font-size: 1.375em;
+  }
+
+  @media (min-width: 1120px) {
+    font-size: 1.5em;
+  }
+}
+
+.g-type-section-2.strong {
+  font-weight: 600;
+}
+
+/* Section 3 */
+.g-type-section-3 {
+  font-family: var(--open-sans-font);
+  font-weight: 400;
+  font-size: 1.125em;
+  line-height: 1.5;
+
+  @media (min-width: 1120px) {
+    font-size: 1.25em;
+  }
+}
+
+.g-type-section-3.strong {
+  font-weight: 600;
+}
+
+/* Section 4 */
+.g-type-section-4 {
+  font-family: var(--open-sans-font);
+  font-weight: 600;
+  font-size: 1em;
+  line-height: 1.75;
+}
+
+/* Intro */
+.g-type-intro {
+  font-family: var(--open-sans-font);
+  font-weight: 200;
+  font-size: 1.125em;
+  line-height: 1.5;
+
+  @media (min-width: 768px) {
+    font-size: 1.375em;
+  }
+
+  @media (min-width: 1120px) {
+    font-size: 1.5em;
+  }
+}
+
+/* Body */
+.g-type-body {
+  font-family: var(--open-sans-font);
+  font-size: 1em;
+  line-height: 1.75;
+}
+
+.g-type-body.strong {
+  font-weight: 600;
+}
+
+.g-type-body.emphasis {
+  font-style: italic;
+}
+
+/* Caption */
+.g-type-caption {
+  font-family: var(--open-sans-font);
+  font-size: 0.875em;
+  line-height: 1.7;
+}
+
+.g-type-caption.strong {
+  font-weight: 600;
+}
+
+/* Label */
+.g-type-label {
+  font-family: var(--open-sans-font);
+  font-size: 0.75em;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.g-type-label.strong {
+  font-weight: 700;
+}
+
+/* Code */
+.g-type-code {
+  font-family: var(--monospace-font);
+  font-size: 0.8125em;
+  line-height: 1.7;
+
+  @media (min-width: 768px) {
+    font-size: 0.9375em;
+  }
+}
+
+h3,
+h2,
+h1 {
+  font-family: var(--klavika-font);
+  font-kerning: normal;
+  font-weight: 500;
+}
+
+h1,
+.h1 {
+  font-size: 3.5em;
+  font-weight: 600;
+  line-height: 1.2em;
+}
+
+h2,
+.h2 {
+  font-size: 2.5em;
+  font-weight: 600;
+  margin: 1em 0;
+  line-height: 1.3em;
+
+  @media (max-width: 700px) {
+    font-size: 2.2em;
+  }
+}
+
+h3,
+.h3 {
+  font-family: var(--open-sans-font);
+  font-weight: 600;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  margin: 1em 0;
+
+  @media (max-width: 700px) {
+    font-size: 1.2em;
+  }
+
+  &.lighter {
+    font-weight: 100;
+  }
+}
+
+h6,
+.h6 h5,
+.h5 h4,
+.h4 {
+  font-family: var(--open-sans-font);
+  font-weight: 600;
+}
+
+h4,
+.h4 {
+  font-size: 1.5em;
+}
+
+h5,
+.h5 {
+  font-size: 1.25em;
+}
+
+h6,
+.h6 {
+  font-size: 1.125em;
+  margin: 1em 0;
+}
+
+/* TODO: temporary - remove anchor links, we need to still implement these */
+h1 a.anchor,
+h2 a.anchor,
+h3 a.anchor,
+h4 a.anchor,
+h5 a.anchor,
+h6 a.anchor {
+  display: none;
+}
