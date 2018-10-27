@@ -5,11 +5,26 @@ import Button from '../components/button'
 
 const Index = () => (
   <div>
+    {/* testing global styles import */}
     <style jsx>{globalBase}</style>
     <style jsx>{typeBase}</style>
     <style jsx>{codeHighlightBase}</style>
-    <h3>HashiCorp next.js text</h3>
-    <Button title="Testing" url="#" theme="dark-outline" />
+
+    {/* page-specific inline styles example */}
+    <style jsx>{`
+      ul {
+        list-style: none;
+      }
+    `}</style>
+
+    <h3>Next.js Component Library 🙌🏼</h3>
+
+    <ul>
+      <li>
+        <h6>Button</h6>
+        <Button title="Testing" url="#" theme="dark-outline" />
+      </li>
+    </ul>
   </div>
 )
 
