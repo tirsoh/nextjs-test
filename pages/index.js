@@ -52,6 +52,10 @@ const Index = () => (
           svg={true}
         />
       </li>
+      <li>
+        <h6>Case study slider</h6>
+        <CaseStudySlider _data={CaseStudySliderData} />
+      </li>
     </ul>
   </div>
 )
