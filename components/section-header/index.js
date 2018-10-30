@@ -1,4 +1,4 @@
-import styles from './style.css'
+import css from './style.css'
 import marked from 'marked'
 
 export default function SectionHeader({ headline, description, use_h1 }) {
@@ -29,7 +29,6 @@ export default function SectionHeader({ headline, description, use_h1 }) {
           className="g-type-intro"
         />
       )}
-      <style jsx>{styles}</style>
     </div>
   )
 }

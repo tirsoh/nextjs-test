@@ -1,4 +1,4 @@
-import styles from './style.css'
+import css from './style.css'
 import slugify from 'slugify'
 
 export default ({
@@ -25,7 +25,6 @@ export default ({
       target={ext ? '_blank' : undefined}
       {...additionalProps}
     >
-      <style jsx>{styles}</style>
       {title}
     </a>
   )
