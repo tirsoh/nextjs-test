@@ -1,7 +1,3 @@
-import variables from '../components/global-styles/variables.global.css'
-import globalBase from '../components/global-styles/base.global.css'
-import typeBase from '../components/global-styles/typography.global.css'
-import codeHighlightBase from '../components/global-styles/code-highlighting.global.css'
 import playgroundCss from '../components/global-styles/playground.css'
 
 import Button from '../components/button'
