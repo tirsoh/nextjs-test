@@ -1,5 +1,4 @@
 import styles from './style.css'
-import slugify from 'slugify'
 import { Component } from 'react'
 
 export default class Toggle extends Component {
@@ -15,7 +14,9 @@ export default class Toggle extends Component {
         <div
           className={['switch', this.state.enabled ? 'on' : ''].join(' ')}
           onClick={(() =>
-            this.setState({ enabled: !this.state.enabled })).bind(this)}
+            this.setState({ enabled: !this.state.enabled }, () => {
+              if (this.props.onChange) this.props.onChange(this.state.enabled)
+            })).bind(this)}
         >
           <div className='switch-toggle' />
 
