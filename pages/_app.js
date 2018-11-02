@@ -1,10 +1,9 @@
 import React from 'react'
 import App, { Container } from 'next/app'
 
-import globalBase from '../components/global-styles/base.global.css'
-import typeBase from '../components/global-styles/typography.global.css'
-import codeHighlightBase from '../components/global-styles/code-highlighting.global.css'
-
+import '../components/global-styles/base.global.css'
+import '../components/global-styles/typography.global.css'
+import '../components/global-styles/code-highlighting.global.css'
 export default class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {}
