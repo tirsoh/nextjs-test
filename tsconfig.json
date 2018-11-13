@@ -17,5 +17,6 @@
     "strict": true,
     "target": "esnext"
   },
-  "include": ["components/*/*.tsx", "node_modules/types/*/*.d.ts"]
+  "include": ["components/*/*.tsx"],
+  "typeRoots": ["node_modules/@types"]
 }
