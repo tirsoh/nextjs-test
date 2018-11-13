@@ -1,12 +1,6 @@
 module.exports = {
   presets: [
-    [
-      'next/babel',
-      {
-        'preset-env': {
-          modules: 'commonjs'
-        }
-      }
-    ]
+    "next/babel",
+    "@zeit/next-typescript/babel"
   ]
 }

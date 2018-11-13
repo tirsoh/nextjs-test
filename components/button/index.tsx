@@ -1,4 +1,4 @@
-import css from './style.css'
+import './style.css'
 import slugify from 'slugify'
 
 export default function Button({
@@ -9,10 +9,17 @@ export default function Button({
   ga_prefix,
   classes,
   ...additionalProps
+}: {
+  title: string,
+  url: string,
+  external: boolean,
+  theme: any,
+  ga_prefix: string,
+  classes: string,
+  additionalProps: any[]
 }) {
   if (theme && typeof theme === 'object') theme = theme.slug
   const gaSlug = slugify(title, { lower: true })
-  const ext = external === 'true' || external === true
 
   return (
     <a
@@ -21,8 +28,8 @@ export default function Button({
       }`}
       data-ga-button={`${ga_prefix ? ga_prefix + ' | ' : ''}${gaSlug}`}
       href={url}
-      rel={ext ? 'noopener' : undefined}
-      target={ext ? '_blank' : undefined}
+      rel={external ? 'noopener' : undefined}
+      target={external ? '_blank' : undefined}
       {...additionalProps}
     >
       {title}

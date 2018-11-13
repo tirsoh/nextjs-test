@@ -23,5 +23,10 @@
     "dev": "next",
     "export": "next export",
     "start": "next start"
+  },
+  "devDependencies": {
+    "@types/react": "^16.7.4",
+    "@types/react-dom": "^16.0.9",
+    "@zeit/next-typescript": "^1.1.1"
   }
 }
