@@ -10,12 +10,12 @@ export default function Button({
   classes,
   ...additionalProps
 }: {
-  title: string,
-  url: string,
-  external: boolean,
-  theme: any,
-  ga_prefix: string,
-  classes: string,
+  title: string
+  url: string
+  external: boolean
+  theme: any
+  ga_prefix: string
+  classes: string
   additionalProps: any[]
 }) {
   if (theme && typeof theme === 'object') theme = theme.slug
