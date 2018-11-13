@@ -141,10 +141,6 @@ export default class CaseStudySlider extends React.Component {
               >
                 <div className="logo-container">
                   <Logo dark={this.props.dark} image={company} />
-                  {/* <img
-                    src={company.monochrome_logo.url}
-                    alt={company.monochrome_logo.alt}
-                  /> */}
                 </div>
                 <StatusBar
                   dark={this.props.dark}
