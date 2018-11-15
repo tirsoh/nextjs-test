@@ -7,12 +7,12 @@ const fs = require('fs')
 const config = {
   // setup for static export
   exportPathMap: function() {
-    const root = path.join(__dirname, 'markdown')
+    const root = path.join(__dirname, 'docs')
     const output = { '/': { page: '/' } }
     fs.readdirSync(root).map(file => {
-      output[`/${file.replace(/\.md$/, '')}`] = {
+      output[`/docs/${file.replace(/\.md$/, '')}`] = {
         page: '/post',
-        asPath: path.join('/markdown', file)
+        asPath: path.join(__dirname, 'docs', file)
       }
     })
     return output
