@@ -2,8 +2,7 @@ import React from 'react'
 
 class Page extends React.Component {
   static async getInitialProps({ asPath }) {
-    const path = asPath.substring(1)
-    const mod = await import(`../markdown/${path}.md`)
+    const mod = await import(`../${asPath.substring(1)}.md`)
     return { file: mod.default }
   }
 
