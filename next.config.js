@@ -22,16 +22,8 @@ const config = {
   // setup for markdown file loading
   webpack: config => {
     config.module.rules.push({
-      test: /\.mdx?$/,
       use: [
         'babel-loader',
         '@mdx-js/loader',
         path.join(__dirname, 'lib/mdx-layout-loader')
       ]
-    })
-    config.resolve.symlinks = false
-    return config
-  }
-}
-
-module.exports = withTypescript(withCSS(withBundleAnalyzer(config)))

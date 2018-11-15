@@ -5,6 +5,7 @@
   "author": "Jeff Escalante",
   "dependencies": {
     "marked": "0.5.1",
+    "marked-frontmatter-loader": "0.0.1",
     "next": "^7.0.2",
     "object-assign": "^4.1.1",
     "query-string": "^5.1.1",

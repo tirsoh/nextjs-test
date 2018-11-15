@@ -1,0 +1,333 @@
+/* Component variables */
+.g-content {
+  /* Default highlight color (if no product is specified) */
+  --highlight-color: var(--default-blue);
+  &.consul {
+    --highlight-color: var(--consul-pink);
+  }
+  &.vault {
+    --highlight-color: var(--default-blue);
+  }
+  &.nomad {
+    --highlight-color: var(--nomad-green);
+  }
+  &.terraform {
+    --highlight-color: var(--terraform-purple);
+  }
+  /* Notification blocks */
+  --success-color: #e5fbe9;
+  --success-text: #438642;
+  --success-border: #cff8d1;
+  --info-color: #eff5ff;
+  --info-text: #416f8c;
+  --info-border: #d0e0ff;
+  --warning-color: #fbf8e5;
+  --warning-text: #866d42;
+  --warning-border: #f8ebcf;
+  --danger-color: #fbe5e5;
+  --danger-text: #864242;
+  --danger-border: #f8cfcf;
+}
+
+.g-content {
+  margin: auto;
+  font-size: 16px;
+  color: var(--gray-3);
+
+  /* On large viewports, all content is spaced from edge of container */
+  @media (min-width: 768px) {
+    hyphens: none;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  /* On small viewports, all content except
+  .highlight is spaced from edge of container */
+  & > *:not(.highlight) {
+    @media (max-width: 768px) {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  }
+
+  /* Paragraph text */
+  & p {
+    @extend %typography-body;
+    margin: 20px 0;
+  }
+
+  /* Links */
+  & a {
+    color: var(--highlight-color);
+    position: relative;
+    transition: color 0.3s;
+    text-decoration: none;
+
+    &:not(.anchor) {
+      &::after {
+        position: absolute;
+        bottom: 0em;
+        left: 0;
+        content: '';
+        width: 100%;
+        height: 1px;
+        background-color: var(--highlight-color);
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+    }
+
+    &:hover {
+      color: var(--highlight-color);
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  /* Headings */
+
+  & h1 {
+    @extend %typography-display-2;
+    color: var(--black);
+    margin: 72px 0 40px 0;
+    &:first-child {
+      margin-top: 0px;
+    }
+  }
+
+  & h2 {
+    @extend %typography-section-1;
+    color: var(--black);
+    margin: 72px 0 32px 0;
+  }
+
+  & h3 {
+    @extend %typography-section-2;
+    color: var(--black);
+    margin: 56px 0 24px 0;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--gray-8);
+  }
+
+  & h4 {
+    @extend %typography-section-3;
+    color: var(--gray-1);
+    margin: 44px 0 16px 0;
+  }
+
+  & h5 {
+    @extend %typography-section-4;
+    color: var(--gray-1);
+    margin: 40px 0 16px 0;
+    font-weight: 400;
+  }
+
+  & h6 {
+    @extend %typography-label;
+    color: var(--gray-4);
+    margin: 28px 0 16px 0;
+  }
+
+  /* Lists */
+  & ul,
+  & ol {
+    counter-reset: li;
+    padding-left: 1.3rem;
+    list-style: none;
+
+    & li {
+      @extend %typography-body;
+      position: relative;
+      /* Vertical margins for single-paragraph content, multi-paragraph content
+      renders as <p> within <li>, resulting in larger vertical margins */
+      margin-top: 12px;
+      margin-bottom: 12px;
+      &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: var(--gray-6);
+        margin-left: calc(-1 * 1.3rem);
+        width: 1.3rem;
+      }
+    }
+  }
+
+  /* List - ordered bullets */
+  & ul {
+    & li:before {
+      content: '\2022';
+    }
+    & ul li:before {
+      content: '\25AB';
+    }
+    & ul li ul li:before {
+      content: '\203A';
+    }
+    & ul li ul li ul li:before {
+      content: '\2013';
+    }
+    & ul li ul li ul li ul li:before {
+      content: '\2022';
+    }
+  }
+
+  /* List - unordered bullets */
+  & ol {
+    & li {
+      counter-increment: li;
+    }
+    & li:before {
+      font-size: 0.75em;
+      line-height: calc(1.75 / 0.75);
+      content: counter(li);
+    }
+    & ol li:before {
+      content: counter(li, lower-roman);
+    }
+    & ol li ol li:before {
+      content: counter(li, lower-latin);
+    }
+    & ol li ol li ol li:before {
+      content: counter(li, upper-roman);
+    }
+    & ol li ol li ol li ol li:before {
+      content: counter(li);
+    }
+  }
+
+  /* Inline code */
+  &:not(pre) code {
+    padding: 0.3em 0.625em;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+    color: var(--code-light-default);
+    font-family: var(--monospace-font);
+    hyphens: none;
+  }
+
+  /* Code Blocks */
+  & code {
+    font-family: var(--monospace-font);
+    font-size: 0.875em;
+  }
+
+  /* Code Blocks */
+  & pre {
+    margin: 1.5rem 0;
+    background: var(--input-background-dark);
+    border-radius: 3px;
+    font-size: 1em;
+    & code {
+      color: var(--code-dark-default);
+      padding: 0;
+    }
+  }
+
+  /* Inline code in headings */
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    & code {
+      display: inline;
+      /* Needs additional spacing in headers */
+      padding: 0 0.4em;
+      background: none;
+      color: inherit;
+    }
+  }
+
+  /* Images */
+  & img,
+  & * > img {
+    margin: 1rem auto;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Figures and Captions */
+  & figure {
+    margin: 36px 0;
+    & img {
+      border: 1px solid var(--gray-9);
+    }
+    & figcaption {
+      @extend %typography-caption;
+      color: var(--gray-4);
+      text-align: center;
+    }
+  }
+
+  /* Alerts */
+  & .alert {
+    @extend %typography-body;
+    padding: 0 1em;
+    border-radius: 3px;
+    margin: 24px 0;
+
+    &.alert-info {
+      background-color: var(--info-color);
+      color: var(--info-text);
+      border: 1px solid var(--info-border);
+    }
+
+    &.alert-success {
+      background-color: var(--success-color);
+      color: var(--success-text);
+      border: 1px solid var(--success-border);
+    }
+
+    &.alert-warning {
+      background-color: var(--warning-color);
+      color: var(--warning-text);
+      border: 1px solid var(--warning-border);
+    }
+
+    &.alert-danger {
+      background-color: var(--danger-color);
+      color: var(--danger-text);
+      border: 1px solid var(--danger-border);
+    }
+  }
+
+  /* Block quotes */
+  & blockquote {
+    margin: 2em 0;
+    padding-left: 2em;
+    font-style: italic;
+    border-left: 6px solid var(--gray-9);
+    & em {
+      font-style: normal;
+    }
+  }
+
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    display: flex;
+    align-items: flex-end;
+
+    & a.anchor {
+      display: block;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      order: 1;
+      margin-left: 0.2em;
+    }
+
+    &:hover {
+      & a.anchor {
+        opacity: 1;
+        transition: opacity 0.2s ease;
+      }
+    }
+  }
+}

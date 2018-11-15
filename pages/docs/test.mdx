@@ -1,8 +1,8 @@
 ---
-layout: "docs"
-page_title: "AppRole - Auth Methods"
-sidebar_title: "AppRole"
-sidebar_current: "docs-auth-approle"
+layout: 'docs'
+page_title: 'AppRole - Auth Methods'
+sidebar_title: 'AppRole'
+sidebar_current: 'docs-auth-approle'
 description: |-
   The AppRole auth method allows machines and services to authenticate with
   Vault.
@@ -180,8 +180,7 @@ management tool.
 
 RoleID is an identifier that selects the AppRole against which the other
 credentials are evaluated. When authenticating against this auth method's login
-endpoint, the RoleID is a required argument (via `role_id`) at all times. By
-default, RoleIDs are unique UUIDs, which allow them to serve as secondary
+endpoint, the RoleID is a required argument (via `role_id`) at all times. By default, RoleIDs are unique UUIDs, which allow them to serve as secondary
 secrets to the other credential information. However, they can be set to
 particular values to match introspected information by the client (for
 instance, the client's domain name).
