@@ -3,6 +3,7 @@ const withCSS = require('@zeit/next-css')
 const withTypescript = require('@zeit/next-typescript')
 const path = require('path')
 const fs = require('fs')
+const marked = require('./lib/markdown')
 
 const config = {
   // setup for static export
@@ -33,7 +34,15 @@ const config = {
   webpack: config => {
     config.module.rules.push({
       test: /\.md$/,
-      use: ['babel-loader', 'markdown-with-front-matter-loader']
+      use: [
+        'babel-loader',
+        {
+          loader: 'marked-frontmatter-loader',
+          options: {
+            markedOptions: { renderer: marked, tables: true, xhtml: true }
+          }
+        }
+      ]
     })
     return config
   }

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import '../components/global-styles/content.global.css'
+
 class Page extends React.Component {
   static async getInitialProps({ asPath }) {
     const mod = await import(`../${asPath.substring(1)}.md`)
@@ -14,8 +16,8 @@ class Page extends React.Component {
         <p>layout template</p>
         <p>{md.page_title}</p>
         <div
-          className="content"
-          dangerouslySetInnerHTML={{ __html: md.__content }}
+          className="g-content"
+          dangerouslySetInnerHTML={{ __html: md.content }}
         />
       </div>
     )
