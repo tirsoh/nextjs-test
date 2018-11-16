@@ -10,6 +10,15 @@ export default function Image({
   aspect_ratio,
   params = {},
   alt
+}: {
+  src: string
+  steps?: number[]
+  sizes?: string
+  svg?: boolean
+  classes?: string
+  aspect_ratio?: string
+  params?: {}
+  alt?: string
 }) {
   // set default params, merge user preferences with priority
   const opts = assign(

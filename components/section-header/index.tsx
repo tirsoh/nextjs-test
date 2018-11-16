@@ -1,7 +1,15 @@
-import css from './style.css'
+import './style.css'
 import marked from 'marked'
 
-export default function SectionHeader({ headline, description, use_h1 }) {
+export default function SectionHeader({
+  headline,
+  description,
+  use_h1
+}: {
+  headline?: string
+  description?: string
+  use_h1?: boolean
+}) {
   return (
     <div className="g-section-header">
       {headline &&

@@ -12,11 +12,11 @@ export default function Button({
 }: {
   title: string
   url: string
-  external: boolean
-  theme: any
-  ga_prefix: string
-  classes: string
-  additionalProps: any[]
+  external?: boolean
+  theme?: string
+  ga_prefix?: string
+  classes?: string
+  additionalProps?: any[]
 }) {
   if (theme && typeof theme === 'object') theme = theme.slug
   const gaSlug = slugify(title, { lower: true })

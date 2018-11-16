@@ -1,7 +1,16 @@
-import styles from './style.css'
+import './style.css'
 import { Component } from 'react'
 
-export default class Toggle extends Component {
+type toggleProps = {
+  enabled: boolean
+  onChange: (enabled: boolean) => void
+}
+
+type toggleState = {
+  enabled: boolean
+}
+
+export default class Toggle extends Component<toggleProps, toggleState> {
   constructor(props) {
     super(props)
     this.state = {
