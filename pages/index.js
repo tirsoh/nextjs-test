@@ -6,6 +6,8 @@ import Toggle from '../components/toggle'
 import Image from '../components/image'
 import CaseStudySlider from '../components/case-study-slider'
 import CaseStudySliderData from '../components/case-study-slider/data'
+import VerticalTextBlockList from '../components/vertical-text-block-list'
+import VerticalTextBlockListData from '../components/vertical-text-block-list/data'
 
 const Index = () => (
   <div>
@@ -46,6 +48,10 @@ const Index = () => (
       <li>
         <h6>Case study slider</h6>
         <CaseStudySlider _data={CaseStudySliderData} />
+      </li>
+      <li>
+        <h6>Vertical Text Block List</h6>
+        <VerticalTextBlockList data={VerticalTextBlockListData} />
       </li>
     </ul>
   </div>
