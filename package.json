@@ -35,16 +35,5 @@
     "export": "next export",
     "static": "next build && next export",
     "start": "next start"
-<<<<<<< HEAD
-=======
-  },
-  "devDependencies": {
-    "@types/marked": "^0.4.2",
-    "@types/object-assign": "^4.0.30",
-    "@types/query-string": "^6.1.1",
-    "@types/react": "^16.7.4",
-    "@types/react-dom": "^16.0.9",
-    "@zeit/next-typescript": "^1.1.1"
->>>>>>> WIP ts definitions for components
   }
 }
