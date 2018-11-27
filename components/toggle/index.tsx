@@ -1,24 +1,24 @@
 import './style.css'
 import { Component } from 'react'
 
-type toggleProps = {
+type Props = {
   enabled: boolean
   onChange: (enabled: boolean) => void
 }
 
-type toggleState = {
+type State = {
   enabled: boolean
 }
 
-export default class Toggle extends Component<toggleProps, toggleState> {
-  constructor(props) {
+export default class Toggle extends Component<Props, State> {
+  constructor(props: Props) {
     super(props)
     this.state = {
       enabled: this.props.enabled || false
     }
   }
 
-  render() {
+  public render() {
     return (
       <div
         className={['switch', this.state.enabled ? 'on' : ''].join(' ')}
@@ -32,7 +32,7 @@ export default class Toggle extends Component<toggleProps, toggleState> {
     )
   }
 
-  componentDidUpdate(prevProps) {
+  public componentDidUpdate(prevProps: Props) {
     // if a parent changes the enabled prop value, reflect it to the state
     if (this.props.enabled !== prevProps.enabled) {
       this.setState({ enabled: this.props.enabled })
