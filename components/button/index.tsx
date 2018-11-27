@@ -1,6 +1,8 @@
 import './style.css'
 import slugify from 'slugify'
 
+import { ButtonProps } from './types'
+
 export default function Button({
   title,
   url,
@@ -9,16 +11,7 @@ export default function Button({
   ga_prefix,
   classes,
   ...additionalProps
-}: {
-  title: string
-  url: string
-  external?: boolean
-  theme?: string
-  ga_prefix?: string
-  classes?: string
-  additionalProps?: any[]
-}) {
-  if (theme && typeof theme === 'object') theme = theme.slug
+}: ButtonProps) {
   const gaSlug = slugify(title, { lower: true })
 
   return (
