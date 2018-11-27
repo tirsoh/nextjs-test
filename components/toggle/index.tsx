@@ -1,17 +1,10 @@
 import './style.css'
 import { Component } from 'react'
 
-type Props = {
-  enabled: boolean
-  onChange: (enabled: boolean) => void
-}
+import { ToggleProps, ToggleState } from './types'
 
-type State = {
-  enabled: boolean
-}
-
-export default class Toggle extends Component<Props, State> {
-  constructor(props: Props) {
+export default class Toggle extends Component<ToggleProps, ToggleState> {
+  constructor(props: ToggleProps) {
     super(props)
     this.state = {
       enabled: this.props.enabled || false
@@ -32,7 +25,7 @@ export default class Toggle extends Component<Props, State> {
     )
   }
 
-  public componentDidUpdate(prevProps: Props) {
+  public componentDidUpdate(prevProps: ToggleProps) {
     // if a parent changes the enabled prop value, reflect it to the state
     if (this.props.enabled !== prevProps.enabled) {
       this.setState({ enabled: this.props.enabled })

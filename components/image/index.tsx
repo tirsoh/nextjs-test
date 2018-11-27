@@ -1,6 +1,8 @@
 import queryString from 'query-string'
 import assign from 'object-assign'
 
+import { ImageProps } from './types'
+
 export default function Image({
   src,
   steps = [250, 500, 750, 1000, 1500, 2000, 2500],
@@ -10,16 +12,7 @@ export default function Image({
   aspect_ratio,
   params = {},
   alt
-}: {
-  src: string
-  steps?: number[]
-  sizes?: string
-  svg?: boolean
-  classes?: string
-  aspect_ratio?: string
-  params?: {}
-  alt?: string
-}) {
+}: ImageProps) {
   // set default params, merge user preferences with priority
   const opts = assign(
     {
@@ -29,14 +22,6 @@ export default function Image({
     },
     params
   )
-
-  // handle aspect ratios & steps passed as a string
-  aspect_ratio =
-    typeof aspect_ratio === 'string'
-      ? aspect_ratio.split(',').map(Number)
-      : aspect_ratio
-
-  steps = typeof steps === 'string' ? steps.split(',').map(Number) : steps
 
   if (svg) {
     // if it's an SVG, we don't need the picture element, so return
@@ -67,7 +52,7 @@ export default function Image({
   }
 }
 
-function formatSteps(steps, opts, aspect_ratio, src) {
+function formatSteps(src, opts, aspect_ratio, steps) {
   return steps.map(s => `${format(src, opts, s, aspect_ratio)} ${s}w`)
 }
 
