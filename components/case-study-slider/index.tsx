@@ -3,26 +3,52 @@ import SliderFrame from './Frame'
 import Logo from './Logo'
 import StatusBar from './StatusBar'
 
-import styles from './style.css'
+import './style.css'
 
-export default class CaseStudySlider extends React.Component {
-  constructor(props) {
+import { CaseStudyType } from './types'
+
+type Props = {
+  data: {
+    case_studies: CaseStudyType[]
+  }
+  timing?: number
+  dark?: boolean
+}
+
+type State = {
+  active: number
+  timing: number
+  numFrames: number
+  measure: boolean
+  containerWidth: number
+  frameSize: number
+}
+
+export default class CaseStudySlider extends React.Component<Props, State> {
+  // There's an issue with TypeScript pulling in Node typings and not DOM
+  // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/21310#issuecomment-367919251
+  private timer: window.setInterval
+  private resizeTimeout: window.setTimeout
+
+  constructor(props: Props) {
     super(props)
-    const timing = this.props.timing ? parseInt(this.props.timing) : 10
-    this.data = this.props._data
+    const timing = this.props.timing || 10
     this.state = {
       active: 0,
       timing: timing,
-      numFrames: this.data.case_studies.length,
+      numFrames: this.props.data.case_studies.length,
       measure: true,
-      containerWidth: 0
+      containerWidth: 0,
+      frameSize: 0
     }
+
+    this.timer = null
+    this.resizeTimeout = null
 
     this.handleClick = this.handleClick.bind(this)
     this.throttledResize = this.throttledResize.bind(this)
     this.onSize = this.onSize.bind(this)
     this.resetTimer = this.resetTimer.bind(this)
-    this.resizeTimeout = null
   }
 
   componentDidMount() {
@@ -37,31 +63,30 @@ export default class CaseStudySlider extends React.Component {
     window.removeEventListener('resize', this.throttledResize)
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props._data !== prevProps._data) {
-      this.data = this.props._data
-      if (this.data.case_studies.length != prevState.numFrames) {
+  componentDidUpdate(prevProps: Props, prevState: State) {
+    if (this.props.data !== prevProps.data) {
+      if (this.props.data.case_studies.length != prevState.numFrames) {
         this.setState(
           {
-            numFrames: this.data.case_studies.length,
+            numFrames: this.props.data.case_studies.length,
             measure: true
           },
           () => {
-            if (this.data.case_studies.length === 1) {
+            if (this.props.data.case_studies.length === 1) {
               clearInterval(this.timer)
             }
           }
         )
       }
-      if (prevState.active > this.data.case_studies.length - 1) {
+      if (prevState.active > this.props.data.case_studies.length - 1) {
         this.setState({ active: 0 })
       }
     }
 
-    if (this.props.timing && parseInt(this.props.timing) != prevState.timing) {
+    if (this.props.timing && this.props.timing != prevState.timing) {
       this.setState(
         {
-          timing: parseInt(this.props.timing),
+          timing: this.props.timing,
           active: 0
         },
         this.resetTimer
@@ -89,12 +114,12 @@ export default class CaseStudySlider extends React.Component {
     this.setState({ active: nextSlide })
   }
 
-  handleClick(i) {
+  handleClick(i: number) {
     if (i === this.state.active) return
     this.setState({ active: i }, this.resetTimer)
   }
 
-  onSize(size) {
+  onSize(size: { width: number }) {
     if (this.state.measure) {
       this.setState({
         frameSize: size.width,
@@ -105,33 +130,28 @@ export default class CaseStudySlider extends React.Component {
   }
 
   render() {
-    const { case_studies } = this.data
+    const { case_studies } = this.props.data
+    const { dark } = this.props
+    const { containerWidth, numFrames, active, measure, timing } = this.state
 
     // If state.measure is true, we don't want inline styles because the element size is being calculated
-    const containerWidth = !this.state.measure
+    const wrapperWidth: React.CSSProperties | undefined = !measure
       ? {
-          width: `${this.state.containerWidth}px`,
+          width: `${containerWidth}px`,
           transform: `translateX(
-            -${(this.state.containerWidth / this.state.numFrames) *
-              this.state.active}px)`
+            -${(containerWidth / numFrames) * active}px)`
         }
-      : null
+      : undefined
 
-    const frameWidth = !this.state.measure
-      ? { float: 'left', width: `${100 / this.state.numFrames}%` }
+    const frameWidth = !measure
+      ? { float: 'left', width: `${100 / numFrames}%` }
       : null
 
     return (
-      <div
-        className="g-case-study-slider"
-        data-state={this.props._state}
-        ref={el => (this.slider = el)}
-      >
-        {this.state.numFrames > 1 && (
+      <div className="g-case-study-slider">
+        {numFrames > 1 && (
           <div
-            className={`logo-bar-container${
-              this.state.numFrames === 2 ? ' double' : ''
-            }`}
+            className={`logo-bar-container${numFrames === 2 ? ' double' : ''}`}
           >
             {case_studies.map(({ company }, i) => (
               <div
@@ -140,24 +160,20 @@ export default class CaseStudySlider extends React.Component {
                 key={company.monochrome_logo.url}
               >
                 <div className="logo-container">
-                  <Logo dark={this.props.dark} image={company} />
+                  <Logo dark={dark} image={company} />
                 </div>
-                <StatusBar
-                  dark={this.props.dark}
-                  active={this.state.active === i}
-                  timing={this.state.timing}
-                />
+                <StatusBar dark={dark} active={active === i} timing={timing} />
               </div>
             ))}
           </div>
         )}
         <div className="case-study-container">
-          <div className="slider-container" style={containerWidth}>
+          <div className="slider-container" style={wrapperWidth}>
             {case_studies.map(caseStudy => (
               <SliderFrame
-                dark={this.props.dark}
+                dark={dark}
                 caseStudy={caseStudy}
-                single={this.state.numFrames === 1}
+                single={numFrames === 1}
                 key={caseStudy.headline}
                 onSize={this.onSize}
                 style={frameWidth}

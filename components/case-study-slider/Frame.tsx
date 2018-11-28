@@ -4,7 +4,19 @@ import Button from '../button'
 import Image from '../image'
 import Logo from './Logo'
 
-function SliderFrame({ caseStudy, dark, single, style }) {
+import { CaseStudyType } from './types'
+
+function SliderFrame({
+  caseStudy,
+  dark,
+  single,
+  style
+}: {
+  caseStudy: CaseStudyType
+  dark?: boolean
+  single?: boolean
+  style?: React.CSSProperties
+}) {
   return (
     <div className={`slider-frame${single ? ' single' : ''}`} style={style}>
       <div className="case-study">
@@ -12,7 +24,7 @@ function SliderFrame({ caseStudy, dark, single, style }) {
           <Image
             src={caseStudy.case_study_resource.image.url}
             alt={caseStudy.case_study_resource.image.alt}
-            aspect_ratio={single ? '16,10,500' : '16,9,500'}
+            aspect_ratio={single ? [16, 10, 500] : [16, 9, 500]}
           />
         </div>
         <div className="feature-content">
@@ -23,12 +35,12 @@ function SliderFrame({ caseStudy, dark, single, style }) {
           )}
           <h3
             dangerouslySetInnerHTML={{
-              __html: marked.inlineLexer(caseStudy.headline, [])
+              __html: marked(caseStudy.headline)
             }}
           />
           <p
             dangerouslySetInnerHTML={{
-              __html: marked.inlineLexer(caseStudy.description, [])
+              __html: marked(caseStudy.description)
             }}
           />
           <Button

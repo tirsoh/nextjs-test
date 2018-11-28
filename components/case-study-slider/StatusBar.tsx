@@ -1,4 +1,12 @@
-export default function StatusBar({ dark, active, timing }) {
+export default function StatusBar({
+  dark,
+  active,
+  timing
+}: {
+  dark?: boolean
+  active: boolean
+  timing: number
+}) {
   return (
     <div className={`progress-bar${dark ? ' dark' : ''}`}>
       <span

@@ -29,12 +29,12 @@ export default function Image({
   } else {
     // otherwise, we return a picture element with multiple sizes and a webp
     // optimized version for performance
-    const srcDefault = formatSteps(steps, opts, aspect_ratio, src)
+    const srcDefault = formatSteps(src, opts, aspect_ratio, steps)
     const srcWebp = formatSteps(
-      steps,
+      src,
       assign({}, opts, { fm: 'webp' }),
       aspect_ratio,
-      src
+      steps
     )
 
     return (
@@ -52,11 +52,29 @@ export default function Image({
   }
 }
 
-function formatSteps(src, opts, aspect_ratio, steps) {
+function formatSteps(
+  src: string,
+  opts: {
+    w?: number
+    h?: number
+    fm: string
+  },
+  aspect_ratio: number[],
+  steps: number[]
+) {
   return steps.map(s => `${format(src, opts, s, aspect_ratio)} ${s}w`)
 }
 
-function format(src, opts, width, aspect_ratio) {
+function format(
+  src: string,
+  opts: {
+    w?: number
+    h?: number
+    fm: string
+  },
+  width: number,
+  aspect_ratio: number[] | undefined
+) {
   const opt = assign({}, opts)
   if (width) opt.w = width
   if (width && aspect_ratio) opt.h = (aspect_ratio[1] / aspect_ratio[0]) * width
