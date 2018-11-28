@@ -1,4 +1,4 @@
-import playgroundCss from '../components/global-styles/playground.css'
+import '../components/global-styles/playground.css'
 
 import Button from '../components/button'
 import SectionHeader from '../components/section-header'
@@ -36,7 +36,7 @@ const Index = () => (
         <Image
           src="https://www.datocms-assets.com/2885/1538142087-ye-endahl.jpg"
           alt="Test image"
-          aspect_ratio="16,9"
+          aspect_ratio={[16, 9]}
         />
         <p>SVG</p>
         <Image
@@ -47,7 +47,7 @@ const Index = () => (
       </li>
       <li>
         <h6>Case study slider</h6>
-        <CaseStudySlider _data={CaseStudySliderData} />
+        <CaseStudySlider data={CaseStudySliderData} />
       </li>
       <li>
         <h6>Vertical Text Block List</h6>

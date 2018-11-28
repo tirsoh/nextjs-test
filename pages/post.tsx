@@ -2,7 +2,9 @@ import React from 'react'
 
 import '../components/global-styles/content.global.css'
 
-class Page extends React.Component {
+class Page extends React.Component<{
+  file: { page_title: string; content: string }
+}> {
   static async getInitialProps({ asPath }) {
     const mod = await import(`../${asPath.substring(1)}.md`)
     return { file: mod.default }
