@@ -4,7 +4,7 @@ export type ImageProps = {
   sizes?: string
   svg?: boolean
   classes?: string
-  aspect_ratio?: number[] | undefined
+  aspect_ratio?: number[]
   params?: {}
   alt?: string
 }
