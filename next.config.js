@@ -3,16 +3,17 @@ const withCSS = require('@zeit/next-css')
 const withTypescript = require('@zeit/next-typescript')
 const path = require('path')
 const fs = require('fs')
+const readdirp = require('fs-readdir-recursive')
 
 const config = {
-  pageExtensions: ['js', 'jsx', 'tsx', 'mdx'],
+  pageExtensions: ['js', 'jsx', 'tsx', 'mdx', 'md'],
   // setup for static export
   exportPathMap: function() {
     const root = path.join(__dirname, 'docs')
     const output = { '/': { page: '/' } }
-    fs.readdirSync(root).map(file => {
-      if (!file.match(/\.mdx$/)) return
-      const page = `/docs/${file.replace(/\.mdx$/, '')}`
+    readdirp(root).map((file) => {
+      if (!file.match(/\.mdx?$/)) return
+      const page = `/docs/${file.replace(/\.mdx?$/, '')}`
       output[page] = { page }
     })
     return output
