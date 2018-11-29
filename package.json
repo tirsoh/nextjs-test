@@ -22,6 +22,7 @@
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-typescript": "^1.1.1",
     "babel-loader": "^8.0.4",
+    "fs-readdir-recursive": "^1.1.0",
     "gray-matter": "^4.0.1",
     "postcss-preset-env": "^6.2.0"
   },
