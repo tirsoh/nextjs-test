@@ -5,15 +5,15 @@ const path = require('path')
 const fs = require('fs')
 
 const config = {
+  pageExtensions: ['js', 'jsx', 'tsx', 'mdx'],
   // setup for static export
   exportPathMap: function() {
     const root = path.join(__dirname, 'docs')
     const output = { '/': { page: '/' } }
     fs.readdirSync(root).map(file => {
-      output[`/docs/${file.replace(/\.md$/, '')}`] = {
-        page: '/post',
-        asPath: path.join(__dirname, 'docs', file)
-      }
+      if (!file.match(/\.mdx$/)) return
+      const page = `/docs/${file.replace(/\.mdx$/, '')}`
+      output[page] = { page }
     })
     return output
   },
@@ -32,8 +32,12 @@ const config = {
   // setup for markdown file loading
   webpack: config => {
     config.module.rules.push({
-      test: /\.md$/,
-      use: ['babel-loader', 'markdown-with-front-matter-loader']
+      test: /\.mdx?$/,
+      use: [
+        'babel-loader',
+        '@mdx-js/loader',
+        path.join(__dirname, 'lib/mdx-layout-loader')
+      ]
     })
     return config
   }
