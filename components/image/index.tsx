@@ -62,7 +62,7 @@ function formatSteps(
   steps: number[],
   aspect_ratio?: number[]
 ) {
-  return steps.map(s => `${format(src, opts, s, aspect_ratio)} ${s}w`)
+  return steps.map(s => `${format(src, opts, s, aspect_ratio)} ${s}w`).join(',')
 }
 
 function format(
