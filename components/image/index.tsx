@@ -16,7 +16,7 @@ export default function Image({
   // set default params, merge user preferences with priority
   const opts = assign(
     {
-      fm: src.match(/\.(\w+)$/)[1],
+      fm: getImageFormat(src),
       fit: aspect_ratio ? 'crop' : 'max',
       q: 80
     },
@@ -72,11 +72,19 @@ function format(
     h?: number
     fm: string
   },
-  width: number,
+  width?: number,
   aspect_ratio?: number[]
 ) {
   const opt = assign({}, opts)
   if (width) opt.w = width
   if (width && aspect_ratio) opt.h = (aspect_ratio[1] / aspect_ratio[0]) * width
   return `${src}?${queryString.stringify(opt)}`
+}
+
+function getImageFormat(src: string) {
+  // Get file extension from src url
+  const match: RegExpMatchArray | null = src.match(/\.(\w+)$/)
+  if (match && match[1]) return match[1]
+  // Default to jpg
+  return 'jpg'
 }

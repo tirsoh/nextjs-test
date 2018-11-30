@@ -36,7 +36,13 @@ const Index = () => (
         <Image
           src="https://www.datocms-assets.com/2885/1538142087-ye-endahl.jpg"
           alt="Test image"
-          aspect_ratio={[16, 9]}
+          aspect_ratio={[16, 9, 501]}
+          params={{ blur: 80 }}
+        />
+        <Image
+          src="https://www.datocms-assets.com/2885/1538142087-ye-endahl.jpg"
+          alt="Test image"
+          aspect_ratio={[20, 1, 200]}
         />
         <p>SVG</p>
         <Image
