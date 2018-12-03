@@ -1,3 +1,3 @@
 export default () => {
-  return <p>docs yay!</p>
+  return <p>docs index page</p>
 }
