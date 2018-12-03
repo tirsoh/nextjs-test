@@ -32,6 +32,7 @@
     "build": "next build",
     "dev": "next",
     "export": "next export",
-    "start": "next start"
+    "start": "next start",
+    "static": "next build && next export"
   }
 }
