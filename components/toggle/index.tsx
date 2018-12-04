@@ -11,7 +11,14 @@ export default class Toggle extends Component<ToggleProps, ToggleState> {
     }
   }
 
-  public render() {
+  componentDidUpdate(prevProps: ToggleProps) {
+    // if a parent changes the enabled prop value, reflect it to the state
+    if (this.props.enabled !== prevProps.enabled) {
+      this.setState({ enabled: this.props.enabled })
+    }
+  }
+
+  render() {
     return (
       <div
         className={['switch', this.state.enabled ? 'on' : ''].join(' ')}
@@ -23,12 +30,5 @@ export default class Toggle extends Component<ToggleProps, ToggleState> {
         <div className="switch-toggle" />
       </div>
     )
-  }
-
-  public componentDidUpdate(prevProps: ToggleProps) {
-    // if a parent changes the enabled prop value, reflect it to the state
-    if (this.props.enabled !== prevProps.enabled) {
-      this.setState({ enabled: this.props.enabled })
-    }
   }
 }

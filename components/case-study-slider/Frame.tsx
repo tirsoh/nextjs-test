@@ -35,12 +35,12 @@ function SliderFrame({
           )}
           <h3
             dangerouslySetInnerHTML={{
-              __html: marked(caseStudy.headline)
+              __html: marked.inlineLexer(caseStudy.headline, [])
             }}
           />
           <p
             dangerouslySetInnerHTML={{
-              __html: marked(caseStudy.description)
+              __html: marked.inlineLexer(caseStudy.description, [])
             }}
           />
           <Button

@@ -84,7 +84,5 @@ function format(
 function getImageFormat(src: string) {
   // Get file extension from src url
   const match: RegExpMatchArray | null = src.match(/\.(\w+)$/)
-  if (match && match[1]) return match[1]
-  // Default to jpg
-  return 'jpg'
+  return match && match[1] ? match[1] : 'jpg'
 }

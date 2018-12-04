@@ -14,14 +14,14 @@ export default function SectionHeader({
         (use_h1 ? (
           <h1
             dangerouslySetInnerHTML={{
-              __html: marked(headline)
+              __html: marked.inlineLexer(headline, [])
             }}
             className="g-type-display-1"
           />
         ) : (
           <h2
             dangerouslySetInnerHTML={{
-              __html: marked(headline)
+              __html: marked.inlineLexer(headline, [])
             }}
             className="g-type-section-1"
           />
@@ -30,7 +30,7 @@ export default function SectionHeader({
       {description && (
         <h3
           dangerouslySetInnerHTML={{
-            __html: marked(description)
+            __html: marked.inlineLexer(description, [])
           }}
           className="g-type-intro"
         />

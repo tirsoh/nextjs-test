@@ -5,32 +5,18 @@ import StatusBar from './StatusBar'
 
 import './style.css'
 
-import { CaseStudyType } from './types'
+import { CaseStudyProps, CaseStudyState } from './types'
 
-type Props = {
-  data: {
-    case_studies: CaseStudyType[]
-  }
-  timing?: number
-  dark?: boolean
-}
-
-type State = {
-  active: number
-  timing: number
-  numFrames: number
-  measure: boolean
-  containerWidth: number
-  frameSize: number
-}
-
-export default class CaseStudySlider extends React.Component<Props, State> {
+export default class CaseStudySlider extends React.Component<
+  CaseStudyProps,
+  CaseStudyState
+> {
   // There's an issue with TypeScript pulling in Node typings and not DOM
   // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/21310#issuecomment-367919251
   private timer: window.setInterval
   private resizeTimeout: window.setTimeout
 
-  constructor(props: Props) {
+  constructor(props: CaseStudyProps) {
     super(props)
     const timing = this.props.timing || 10
     this.state = {
@@ -63,7 +49,7 @@ export default class CaseStudySlider extends React.Component<Props, State> {
     window.removeEventListener('resize', this.throttledResize)
   }
 
-  componentDidUpdate(prevProps: Props, prevState: State) {
+  componentDidUpdate(prevProps: CaseStudyProps, prevState: CaseStudyState) {
     if (this.props.data !== prevProps.data) {
       if (this.props.data.case_studies.length != prevState.numFrames) {
         this.setState(
