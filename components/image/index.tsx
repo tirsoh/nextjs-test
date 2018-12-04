@@ -1,7 +1,7 @@
 import queryString from 'query-string'
 import assign from 'object-assign'
 
-import { ImageProps } from './types'
+import { ImageProps, ImageOptions } from './types'
 
 export default function Image({
   src,
@@ -54,34 +54,26 @@ export default function Image({
 
 function formatSteps(
   src: string,
-  opts: {
-    w?: number
-    h?: number
-    fm: string
-  },
+  opts: ImageOptions,
   steps: number[],
   aspect_ratio?: number[]
-) {
+): string {
   return steps.map(s => `${format(src, opts, s, aspect_ratio)} ${s}w`).join(',')
 }
 
 function format(
   src: string,
-  opts: {
-    w?: number
-    h?: number
-    fm: string
-  },
+  opts: ImageOptions,
   width?: number,
   aspect_ratio?: number[]
-) {
+): string {
   const opt = assign({}, opts)
   if (width) opt.w = width
   if (width && aspect_ratio) opt.h = (aspect_ratio[1] / aspect_ratio[0]) * width
   return `${src}?${queryString.stringify(opt)}`
 }
 
-function getImageFormat(src: string) {
+function getImageFormat(src: string): string {
   // Get file extension from src url
   const match: RegExpMatchArray | null = src.match(/\.(\w+)$/)
   return match && match[1] ? match[1] : 'jpg'
