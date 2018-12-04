@@ -4,19 +4,9 @@ import Button from '../button'
 import Image from '../image'
 import Logo from './Logo'
 
-import { CaseStudyType } from './types'
+import { SliderFrameProps } from './types'
 
-function SliderFrame({
-  caseStudy,
-  dark,
-  single,
-  style
-}: {
-  caseStudy: CaseStudyType
-  dark?: boolean
-  single?: boolean
-  style?: React.CSSProperties
-}) {
+function SliderFrame({ caseStudy, dark, single, style }: SliderFrameProps) {
   return (
     <div className={`slider-frame${single ? ' single' : ''}`} style={style}>
       <div className="case-study">
