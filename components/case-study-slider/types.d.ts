@@ -1,4 +1,4 @@
-export interface ImageType {
+export type ImageType = {
   url: string
   alt: string
   format: string
@@ -28,7 +28,7 @@ export interface SliderFrameProps {
   style?: React.CSSProperties
 }
 
-export interface CaseStudyProps {
+export type CaseStudyProps = {
   data: {
     case_studies: CaseStudyType[]
   }
@@ -36,7 +36,7 @@ export interface CaseStudyProps {
   dark?: boolean
 }
 
-export interface CaseStudyState {
+export type CaseStudyState = {
   active: number
   timing: number
   numFrames: number

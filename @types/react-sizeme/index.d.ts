@@ -22,7 +22,7 @@ declare module 'react-sizeme' {
 
   export class SizeMe extends Component<SizeMeOptions> {}
 
-  export const withSizeTypes: (
+  export const withSize: (
     options?: SizeMeOptions
   ) => <P extends SizeMeProps>(
     component: ComponentType<P>

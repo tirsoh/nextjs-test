@@ -13,8 +13,8 @@ export default class CaseStudySlider extends React.Component<
 > {
   // There's an issue with TypeScript pulling in Node typings and not DOM
   // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/21310#issuecomment-367919251
-  private timer: window.setInterval
-  private resizeTimeout: window.setTimeout
+  timer: window.setInterval
+  resizeTimeout: window.setTimeout
 
   constructor(props: CaseStudyProps) {
     super(props)
