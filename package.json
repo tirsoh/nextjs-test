@@ -5,6 +5,7 @@
     "@zeit/next-bundle-analyzer": "^0.1.2",
     "@zeit/next-css": "^1.0.1",
     "babel-loader": "^8.0.4",
+    "datocms-client": "^0.8.3",
     "marked": "0.5.1",
     "next": "^7.0.2",
     "object-assign": "^4.1.1",
@@ -22,6 +23,7 @@
     "build": "next build",
     "dev": "next",
     "export": "next export",
-    "start": "next start"
+    "start": "next start",
+    "static": "next build && next export"
   }
 }
