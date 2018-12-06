@@ -11,7 +11,7 @@ import VerticalTextBlockListData from '../components/vertical-text-block-list/da
 
 const Index = () => (
   <div>
-    <h3>Next.js Component Library 🙌🏼</h3>
+    <h3>Next.js Component Library 🙌</h3>
 
     <ul>
       <li>
