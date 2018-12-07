@@ -7,23 +7,6 @@ const readdirp = require('fs-readdir-recursive')
 
 const config = {
   pageExtensions: ['js', 'jsx', 'tsx', 'mdx'],
-  // setup for static export
-  // exportPathMap: function() {
-  //   const root = path.join(__dirname, 'docs')
-  //   const output = { '/': { page: '/' } }
-  //   readdirp(root).map((file) => {
-  //     if (!file.match(/\.mdx?$/)) return
-  //     if (file.match(/index\.mdx?$/)) {
-  //       const page = `/docs/${file.replace(/\/index\.mdx?$/, '')}`
-  //       output[page] = { page }
-  //     } else {
-  //       const page = `/docs/${file.replace(/\.mdx?$/, '')}`
-  //       output[page] = { page }
-  //     }
-  //   })
-  //   console.log(output)
-  //   return output
-  // },
   analyzeServer: ['server', 'both'].includes(process.env.BUNDLE_ANALYZE),
   analyzeBrowser: ['browser', 'both'].includes(process.env.BUNDLE_ANALYZE),
   bundleAnalyzerConfig: {
