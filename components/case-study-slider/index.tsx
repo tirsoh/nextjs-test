@@ -1,7 +1,10 @@
 import React from 'react'
-import SliderFrame from './Frame'
+
 import Logo from './Logo'
 import StatusBar from './StatusBar'
+import marked from 'marked'
+import Button from '../button'
+import Image from '../image'
 
 import './style.css'
 
@@ -13,8 +16,11 @@ export default class CaseStudySlider extends React.Component<
 > {
   // There's an issue with TypeScript pulling in Node typings and not DOM
   // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/21310#issuecomment-367919251
+  // @ts-ignore
   timer: window.setInterval
+  // @ts-ignore
   resizeTimeout: window.setTimeout
+  frames: any[]
 
   constructor(props: CaseStudyProps) {
     super(props)
@@ -24,22 +30,22 @@ export default class CaseStudySlider extends React.Component<
       timing: timing,
       numFrames: this.props.data.case_studies.length,
       measure: true,
-      containerWidth: 0,
-      frameSize: 0
+      containerWidth: 0
     }
 
-    this.timer = null
-    this.resizeTimeout = null
+    this.frames = []
 
     this.handleClick = this.handleClick.bind(this)
     this.throttledResize = this.throttledResize.bind(this)
-    this.onSize = this.onSize.bind(this)
+    this.measureFrameSize = this.measureFrameSize.bind(this)
     this.resetTimer = this.resetTimer.bind(this)
+    this.resizeTimeout = null
   }
 
   componentDidMount() {
     if (this.state.numFrames > 1) {
       this.timer = setInterval(() => this.tick(), this.state.timing * 1000)
+      this.measureFrameSize()
     }
     window.addEventListener('resize', this.throttledResize, false)
   }
@@ -60,6 +66,7 @@ export default class CaseStudySlider extends React.Component<
           () => {
             if (this.props.data.case_studies.length === 1) {
               clearInterval(this.timer)
+              window.removeEventListener('resize', this.throttledResize)
             }
           }
         )
@@ -78,6 +85,11 @@ export default class CaseStudySlider extends React.Component<
         this.resetTimer
       )
     }
+
+    // If we're measuring on this update get the width
+    if (!prevState.measure && this.state.measure && this.state.numFrames > 1) {
+      this.measureFrameSize()
+    }
   }
 
   resetTimer() {
@@ -86,12 +98,11 @@ export default class CaseStudySlider extends React.Component<
   }
 
   throttledResize() {
-    if (!this.resizeTimeout) {
-      this.resizeTimeout = setTimeout(() => {
-        this.resizeTimeout = null
-        this.setState({ measure: true })
-      }, 750)
-    }
+    this.resizeTimeout && clearTimeout(this.resizeTimeout)
+    this.resizeTimeout = setTimeout(() => {
+      this.resizeTimeout = null
+      this.setState({ measure: true })
+    }, 250)
   }
 
   tick() {
@@ -105,11 +116,12 @@ export default class CaseStudySlider extends React.Component<
     this.setState({ active: i }, this.resetTimer)
   }
 
-  onSize(size: { width: number }) {
-    if (this.state.measure) {
+  measureFrameSize() {
+    // All frames are the same size, so we measure the first one
+    if (this.frames[0]) {
+      const { width } = this.frames[0].getBoundingClientRect()
       this.setState({
-        frameSize: size.width,
-        containerWidth: size.width * this.state.numFrames,
+        containerWidth: width * this.state.numFrames,
         measure: false
       })
     }
@@ -117,25 +129,32 @@ export default class CaseStudySlider extends React.Component<
 
   render() {
     const { case_studies } = this.props.data
+
+    const { measure, active, timing, numFrames, containerWidth } = this.state
     const { dark } = this.props
-    const { containerWidth, numFrames, active, measure, timing } = this.state
 
-    // If state.measure is true, we don't want inline styles because the element size is being calculated
-    const wrapperWidth: React.CSSProperties | undefined = !measure
-      ? {
-          width: `${containerWidth}px`,
-          transform: `translateX(
-            -${(containerWidth / numFrames) * active}px)`
-        }
-      : undefined
+    const single = numFrames === 1
 
-    const frameWidth = !measure
-      ? { float: 'left', width: `${100 / numFrames}%` }
-      : null
+    // Create inline styling for slide container
+    // If we're measuring, or have a single slide then no inline styles should be applied
+    const containerStyle: React.CSSProperties | undefined =
+      measure || single
+        ? undefined
+        : {
+            width: `${containerWidth}px`,
+            transform: `translateX(-${(containerWidth / numFrames) * active}px`
+          }
+
+    // Create inline styling to apply to each frame
+    // If we're measuring or have a single slide then no inline styles should be applied
+    const frameStyle: React.CSSProperties | undefined =
+      measure || single
+        ? undefined
+        : { float: 'left', width: `${100 / numFrames}%` }
 
     return (
       <div className="g-case-study-slider">
-        {numFrames > 1 && (
+        {!single && (
           <div
             className={`logo-bar-container${numFrames === 2 ? ' double' : ''}`}
           >
@@ -154,16 +173,46 @@ export default class CaseStudySlider extends React.Component<
           </div>
         )}
         <div className="case-study-container">
-          <div className="slider-container" style={wrapperWidth}>
+          <div className="slider-container" style={containerStyle}>
             {case_studies.map(caseStudy => (
-              <SliderFrame
-                dark={dark}
-                caseStudy={caseStudy}
-                single={numFrames === 1}
+              <div
+                className={`slider-frame${single ? ' single' : ''}`}
+                style={frameStyle}
+                ref={el => this.frames.push(el)}
                 key={caseStudy.headline}
-                onSize={this.onSize}
-                style={frameWidth}
-              />
+              >
+                <div className="case-study">
+                  <div className="feature-image">
+                    <Image
+                      src={caseStudy.case_study_resource.image.url}
+                      alt={caseStudy.case_study_resource.image.alt}
+                      aspect_ratio={single ? [16, 10, 500] : [16, 9, 500]}
+                    />
+                  </div>
+                  <div className="feature-content">
+                    {single && (
+                      <div className="single-logo">
+                        <Logo dark={dark} image={caseStudy.company} />
+                      </div>
+                    )}
+                    <h3
+                      dangerouslySetInnerHTML={{
+                        __html: marked.inlineLexer(caseStudy.headline, [])
+                      }}
+                    />
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: marked.inlineLexer(caseStudy.description, [])
+                      }}
+                    />
+                    <Button
+                      theme={dark ? 'light-outline' : 'dark-outline'}
+                      title="Read Case Study"
+                      url={`/resources/${caseStudy.case_study_resource.slug}`}
+                    />
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>

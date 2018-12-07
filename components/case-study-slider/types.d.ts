@@ -42,5 +42,4 @@ export type CaseStudyState = {
   numFrames: number
   measure: boolean
   containerWidth: number
-  frameSize: number
 }
