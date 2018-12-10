@@ -1,5 +1,6 @@
 import { graphql } from 'react-apollo'
 import getBlogPostQuery from './getBlogPost.graphql'
+import Author from '../../components/Author'
 
 function BlogPost({ data: { loading, error, blogPost } }) {
   return (
@@ -7,6 +8,7 @@ function BlogPost({ data: { loading, error, blogPost } }) {
       <p>{error ? `Error: ${error}` : ''}</p>
       <p>{loading ? 'Loading...' : ''}</p>
       <p>{JSON.stringify(blogPost)}</p>
+      {blogPost && blogPost.author && <Author id={blogPost.author.id} />}
     </div>
   )
 }

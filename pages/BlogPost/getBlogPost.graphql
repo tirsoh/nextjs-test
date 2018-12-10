@@ -4,5 +4,8 @@ query BlogPost($slug: String!) {
     slug
     body
     date
+    author {
+      id
+    }
   }
 }

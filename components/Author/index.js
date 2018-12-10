@@ -11,14 +11,8 @@ function Author({ data: { loading, error, person } }) {
   )
 }
 
-// Maps data to props
-Author.getInitialProps = async context => {
-  const slug = context.asPath.replace(/^\/blog\//, '')
-  return { slug }
-}
-
 const AuthorWithData = graphql(getAuthor, {
-  options: ({ slug }) => ({ variables: { slug } })
+  options: ({ id }) => ({ variables: { id } })
 })(Author)
 
 export default AuthorWithData
