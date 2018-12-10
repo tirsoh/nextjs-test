@@ -1,5 +1,7 @@
 import React from 'react'
 import App, { Container } from 'next/app'
+import { ApolloProvider } from 'react-apollo'
+import getClient from '../lib/apolloClient'
 
 import '../components/global-styles/base.global.css'
 import '../components/global-styles/typography.global.css'
@@ -19,9 +21,11 @@ export default class MyApp extends App {
     const { Component, pageProps } = this.props
 
     return (
-      <Container>
-        <Component {...pageProps} />
-      </Container>
+      <ApolloProvider client={getClient()}>
+        <Container>
+          <Component {...pageProps} />
+        </Container>
+      </ApolloProvider>
     )
   }
 }
