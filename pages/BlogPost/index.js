@@ -1,6 +1,5 @@
-const gql = require('graphql-tag')
 import { graphql } from 'react-apollo'
-import getBlogPost from './getBlogPost.graphql'
+import getBlogPostQuery from './getBlogPost.graphql'
 
 function BlogPost({ data: { loading, error, blogPost } }) {
   return (
@@ -18,7 +17,7 @@ BlogPost.getInitialProps = async context => {
   return { slug }
 }
 
-const BlogPostWithData = graphql(getBlogPost, {
+const BlogPostWithData = graphql(getBlogPostQuery, {
   options: ({ slug }) => ({ variables: { slug } })
 })(BlogPost)
 
