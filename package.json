@@ -38,6 +38,6 @@
     "export": "next export",
     "static": "next build && next export",
     "start": "next start",
-    "lint": "tsc --noEmit && tslint -c tslint.json '**/*.ts{x,}'"
+    "lint": "tsc --noEmit"
   }
 }
