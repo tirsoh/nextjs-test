@@ -1,0 +1,9 @@
+query Author($id: String!) {
+  person(filter: { id: { eq: $id } }) {
+    id
+    name
+    photo {
+      url
+    }
+  }
+}
