@@ -1,0 +1,218 @@
+.g-footer {
+  width: 100%;
+  background-color: var(--black);
+  color: var(--white);
+  & ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  & li {
+    margin: 4px 0;
+    & a {
+      display: inline-block;
+      color: var(--white);
+      font-size: 0.875em;
+      line-height: 2;
+      outline: 0;
+      text-decoration: none;
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+  & .top {
+    display: flex;
+    justify-content: space-between;
+    padding: 64px 0;
+    @media (max-width: 1120px) {
+      padding: 56px 0;
+    }
+    @media (max-width: 768px) {
+      flex-direction: column;
+      padding: 40px 0;
+    }
+    & form {
+      display: flex;
+      @media (max-width: 768px) {
+        flex-direction: column;
+        width: 100%;
+      }
+      & input[name='email'] {
+        background-color: #1d1f25;
+        border-color: #1d1f25;
+        color: #9396a2;
+        width: 333px;
+        margin-right: 16px;
+        transition: all 0.25s ease;
+        @media (max-width: 928px) {
+          width: 243px;
+          margin-right: 0;
+        }
+        @media (max-width: 768px) {
+          width: 100%;
+          margin-right: 0;
+        }
+        &:focus {
+          background-color: #373942;
+        }
+        &::placeholder {
+          color: #9396a2;
+        }
+      }
+      & .g-btn {
+        font-size: 0.9rem;
+        margin-left: 14px;
+        @media (max-width: 768px) {
+          align-self: flex-start;
+          margin-left: 0;
+          margin-top: 12px;
+          width: auto;
+        }
+      }
+      &.success h4 {
+        font-size: 1em;
+      }
+    }
+    /* Social media links */
+    & ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      @media (max-width: 768px) {
+        margin-top: 32px;
+      }
+      & li {
+        display: flex;
+        align-items: center;
+        & a {
+          width: 24px;
+          height: 24px;
+          display: flex;
+          opacity: 0.4;
+          transition: all 0.25s ease;
+          &:hover {
+            opacity: 1;
+          }
+        }
+        & img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    & li {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 10px;
+    }
+  }
+  & .mid {
+    display: flex;
+    box-shadow: inset 0 1px 0 0 var(--gray-2);
+    padding: 80px 0;
+    @media (max-width: 1120px) {
+      flex-wrap: wrap;
+      padding: 54px 0;
+    }
+    @media (max-width: 768px) {
+      padding: 42px 0 0 0;
+      justify-content: space-between;
+    }
+    & p {
+      color: #9396a2;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-top: 0;
+      margin-bottom: 22px;
+      letter-spacing: 0.5px;
+      @media (max-width: 768px) {
+        padding: 0 8px 8px 8px;
+        margin-bottom: 12px;
+        border-bottom: 1px solid #1d1f25;
+      }
+    }
+    & li a {
+      @media (max-width: 768px) {
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+    }
+    & .logo {
+      width: calc(100% / 6 * 2);
+      margin-top: -12px;
+      @media (max-width: 1120px) {
+        width: 100%;
+        margin-top: 0;
+        margin-right: 0;
+        margin-bottom: 48px;
+      }
+      @media (max-width: 768px) {
+        margin-top: 5px;
+        margin-bottom: 35px;
+      }
+    }
+    & .products,
+    & .partners,
+    & .resources,
+    & .company {
+      width: calc(100% / 6);
+      @media (max-width: 1120px) {
+        width: 25%;
+      }
+      @media (max-width: 768px) {
+        width: calc(50% - 8px);
+        margin-bottom: 35px;
+      }
+    }
+  }
+  & .btm {
+    padding: 0 0 48px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: top;
+    @media (max-width: 768px) {
+      flex-wrap: nowrap;
+      flex-direction: column;
+      padding: 42px 0;
+      box-shadow: inset 0 1px 0 0 var(--gray-2);
+      align-items: flex-start;
+    }
+    & p,
+    & a {
+      color: #9396a2;
+      line-height: 2;
+    }
+    & p {
+      font-size: 0.85rem;
+      margin: 0;
+      padding-right: 2em;
+      padding-bottom: 32px;
+    }
+    & ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
+      & li {
+        margin: 0 10px;
+        &:first-of-type {
+          margin-left: 0;
+        }
+        @media (max-width: 768px) {
+          margin: 0;
+        }
+      }
+    }
+  }
+  & .not-a-bug {
+    color: var(--gray-1);
+    margin-bottom: 32px;
+  }
+}

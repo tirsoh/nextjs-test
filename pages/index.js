@@ -8,6 +8,7 @@ import CaseStudySlider from '../components/case-study-slider'
 import CaseStudySliderData from '../components/case-study-slider/data'
 import VerticalTextBlockList from '../components/vertical-text-block-list'
 import VerticalTextBlockListData from '../components/vertical-text-block-list/data'
+import Footer from '../components/Footer'
 
 const Index = () => (
   <div>
@@ -60,6 +61,8 @@ const Index = () => (
         <VerticalTextBlockList data={VerticalTextBlockListData} />
       </li>
     </ul>
+
+    <Footer />
   </div>
 )
 

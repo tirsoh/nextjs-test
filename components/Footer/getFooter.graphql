@@ -1,0 +1,38 @@
+query Footer {
+  globalFooter {
+    allProductLinks {
+      title
+      url
+    }
+    companyLinks {
+      title
+      url
+    }
+    disclaimerLinks {
+      title
+      url
+    }
+    partnerLinks {
+      title
+      url
+    }
+    primaryLogo {
+      alt
+      url
+    }
+    resourcesLinks {
+      title
+      url
+    }
+    socialLinks {
+      network {
+        icon {
+          alt
+          url
+        }
+        name
+      }
+      url
+    }
+  }
+}
