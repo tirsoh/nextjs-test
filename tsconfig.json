@@ -17,7 +17,8 @@
     "sourceMap": true,
     "strict": true,
     "target": "esnext",
+    "strictNullChecks": false,
     "typeRoots": ["node_modules/@types"]
   },
-  "include": ["components/*/*.tsx"]
+  "include": ["components/**/*", "pages/**/*", "types/**/*"]
 }
