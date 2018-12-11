@@ -2,8 +2,6 @@ const withBundleAnalyzer = require('@zeit/next-bundle-analyzer')
 const withCSS = require('@zeit/next-css')
 const withTypescript = require('@zeit/next-typescript')
 const path = require('path')
-const fs = require('fs')
-const readdirp = require('fs-readdir-recursive')
 
 const config = {
   pageExtensions: ['js', 'jsx', 'tsx', 'mdx'],

@@ -1,5 +1,5 @@
-import './style.css'
 import marked from 'marked'
+import './style.css'
 
 import { SectionHeaderProps } from './types'
 

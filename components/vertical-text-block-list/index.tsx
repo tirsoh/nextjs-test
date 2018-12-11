@@ -1,7 +1,7 @@
 import marked from 'marked'
 import './style.css'
 
-import { VerticalTextBlockListProps, withLinkProps } from './types'
+import { VerticalTextBlockListProps, WithLinkProps } from './types'
 
 function VerticalTextBlockList({
   data,
@@ -32,7 +32,7 @@ function VerticalTextBlockList({
   )
 }
 
-const WithLink = ({ link, children }: withLinkProps) =>
+const WithLink = ({ link, children }: WithLinkProps) =>
   link ? (
     <li>
       <a className="wrapper" href={link}>

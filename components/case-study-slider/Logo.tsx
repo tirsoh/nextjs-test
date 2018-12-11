@@ -6,7 +6,7 @@ export default function Logo({
   dark,
   image
 }: {
-  dark?: Boolean
+  dark?: boolean
   image: ImageInterface
 }) {
   let logoType = 'monochrome_logo'

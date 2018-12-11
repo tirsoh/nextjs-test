@@ -1,7 +1,7 @@
-import queryString from 'query-string'
 import assign from 'object-assign'
+import queryString from 'query-string'
 
-import { ImageProps, ImageOptions } from './types'
+import { ImageOptions, ImageProps } from './types'
 
 export default function Image({
   src,
@@ -56,20 +56,24 @@ function formatSteps(
   src: string,
   opts: ImageOptions,
   steps: number[],
-  aspect_ratio?: number[]
+  aspectRatio?: number[]
 ): string {
-  return steps.map(s => `${format(src, opts, s, aspect_ratio)} ${s}w`).join(',')
+  return steps.map(s => `${format(src, opts, s, aspectRatio)} ${s}w`).join(',')
 }
 
 function format(
   src: string,
   opts: ImageOptions,
   width?: number,
-  aspect_ratio?: number[]
+  aspectRatio?: number[]
 ): string {
   const opt = assign({}, opts)
-  if (width) opt.w = width
-  if (width && aspect_ratio) opt.h = (aspect_ratio[1] / aspect_ratio[0]) * width
+  if (width) {
+    opt.w = width
+  }
+  if (width && aspectRatio) {
+    opt.h = (aspectRatio[1] / aspectRatio[0]) * width
+  }
   return `${src}?${queryString.stringify(opt)}`
 }
 

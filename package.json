@@ -14,6 +14,8 @@
     "stringify-object": "^3.3.0"
   },
   "devDependencies": {
+    "@hashicorp/tsconfig": "^1.0.2",
+    "@hashicorp/tslint": "^1.0.1",
     "@mdx-js/loader": "^0.16.5",
     "@types/marked": "^0.5.0",
     "@types/object-assign": "^4.0.30",
@@ -26,7 +28,11 @@
     "babel-loader": "^8.0.4",
     "fs-readdir-recursive": "^1.1.0",
     "gray-matter": "^4.0.1",
+    "husky": "^1.2.0",
     "postcss-preset-env": "^6.2.0",
+    "prettier": "^1.15.3",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.17.0",
     "typescript": "^3.1.6"
   },
   "license": "ISC",
@@ -37,6 +43,11 @@
     "export": "next export",
     "static": "next build && next export",
     "start": "next start",
-    "lint": "tsc --noEmit"
+    "lint": "tslint --fix -c tslint.json '**/*{.ts,.tsx}'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   }
 }

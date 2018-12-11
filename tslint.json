@@ -1,0 +1,11 @@
+{
+  "extends": ["@hashicorp/tslint"],
+  "linterOptions": {
+    "exclude": ["node_modules/**"]
+  },
+  "rules": {
+    "object-literal-sort-keys": false,
+    "interface-name": [true, "never-prefix"],
+    "no-unused-expression": [true, "allow-fast-null-checks"]
+  }
+}

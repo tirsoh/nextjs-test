@@ -1,5 +1,5 @@
-import './style.css'
 import slugify from 'slugify'
+import './style.css'
 
 import { ButtonProps } from './types'
 

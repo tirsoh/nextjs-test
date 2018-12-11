@@ -1,10 +1,10 @@
 import React from 'react'
 
-import Logo from './Logo'
-import StatusBar from './StatusBar'
 import marked from 'marked'
 import Button from '../button'
 import Image from '../image'
+import Logo from './Logo'
+import StatusBar from './StatusBar'
 
 import './style.css'
 
@@ -17,17 +17,17 @@ export default class CaseStudySlider extends React.Component<
   // There's an issue with TypeScript pulling in Node typings and not DOM
   // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/21310#issuecomment-367919251
   // @ts-ignore
-  timer: window.setInterval
+  public timer: window.setInterval
   // @ts-ignore
-  resizeTimeout: window.setTimeout
-  frames: any[]
+  public resizeTimeout: window.setTimeout
+  public frames: any[]
 
   constructor(props: CaseStudyProps) {
     super(props)
     const timing = this.props.timing || 10
     this.state = {
       active: 0,
-      timing: timing,
+      timing,
       numFrames: this.props.data.case_studies.length,
       measure: true,
       containerWidth: 0
@@ -42,7 +42,7 @@ export default class CaseStudySlider extends React.Component<
     this.resizeTimeout = null
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     if (this.state.numFrames > 1) {
       this.timer = setInterval(() => this.tick(), this.state.timing * 1000)
       this.measureFrameSize()
@@ -50,14 +50,17 @@ export default class CaseStudySlider extends React.Component<
     window.addEventListener('resize', this.throttledResize, false)
   }
 
-  componentWillUnmount() {
+  public componentWillUnmount() {
     clearInterval(this.timer)
     window.removeEventListener('resize', this.throttledResize)
   }
 
-  componentDidUpdate(prevProps: CaseStudyProps, prevState: CaseStudyState) {
+  public componentDidUpdate(
+    prevProps: CaseStudyProps,
+    prevState: CaseStudyState
+  ) {
     if (this.props.data !== prevProps.data) {
-      if (this.props.data.case_studies.length != prevState.numFrames) {
+      if (this.props.data.case_studies.length !== prevState.numFrames) {
         this.setState(
           {
             numFrames: this.props.data.case_studies.length,
@@ -76,7 +79,7 @@ export default class CaseStudySlider extends React.Component<
       }
     }
 
-    if (this.props.timing && this.props.timing != prevState.timing) {
+    if (this.props.timing && this.props.timing !== prevState.timing) {
       this.setState(
         {
           timing: this.props.timing,
@@ -92,12 +95,12 @@ export default class CaseStudySlider extends React.Component<
     }
   }
 
-  resetTimer() {
+  public resetTimer() {
     clearInterval(this.timer)
     this.timer = setInterval(() => this.tick(), this.state.timing * 1000)
   }
 
-  throttledResize() {
+  public throttledResize() {
     this.resizeTimeout && clearTimeout(this.resizeTimeout)
     this.resizeTimeout = setTimeout(() => {
       this.resizeTimeout = null
@@ -105,18 +108,20 @@ export default class CaseStudySlider extends React.Component<
     }, 250)
   }
 
-  tick() {
+  public tick() {
     const nextSlide =
       this.state.active === this.state.numFrames - 1 ? 0 : this.state.active + 1
     this.setState({ active: nextSlide })
   }
 
-  handleClick(i: number) {
-    if (i === this.state.active) return
+  public handleClick(i: number) {
+    if (i === this.state.active) {
+      return
+    }
     this.setState({ active: i }, this.resetTimer)
   }
 
-  measureFrameSize() {
+  public measureFrameSize() {
     // All frames are the same size, so we measure the first one
     if (this.frames[0]) {
       const { width } = this.frames[0].getBoundingClientRect()
@@ -127,7 +132,7 @@ export default class CaseStudySlider extends React.Component<
     }
   }
 
-  render() {
+  public render() {
     const { case_studies } = this.props.data
 
     const { measure, active, timing, numFrames, containerWidth } = this.state

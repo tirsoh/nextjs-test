@@ -1,8 +1,8 @@
-export type ToggleProps = {
+export interface ToggleProps {
   enabled: boolean
   onChange: (enabled: boolean) => void
 }
 
-export type ToggleState = {
+export interface ToggleState {
   enabled: boolean
 }

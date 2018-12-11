@@ -1,6 +1,6 @@
 import { Children } from 'react'
 
-type VerticalTextBlockListData = {
+interface VerticalTextBlockListData {
   logo?: {
     url: string
     alt: string
@@ -10,12 +10,12 @@ type VerticalTextBlockListData = {
   link_url?: string
 }
 
-export type VerticalTextBlockListProps = {
+export interface VerticalTextBlockListProps {
   center_text: boolean
   data: VerticalTextBlockListData[]
 }
 
-export interface withLinkProps {
+export interface WithLinkProps {
   link: string | undefined
   children: React.ReactNode
 }
