@@ -1,11 +1,20 @@
-import styles from './style.css'
+import './style.css'
 import { Component } from 'react'
 
-export default class Toggle extends Component {
-  constructor(props) {
+import { ToggleProps, ToggleState } from './types'
+
+export default class Toggle extends Component<ToggleProps, ToggleState> {
+  constructor(props: ToggleProps) {
     super(props)
     this.state = {
       enabled: this.props.enabled || false
+    }
+  }
+
+  componentDidUpdate(prevProps: ToggleProps) {
+    // if a parent changes the enabled prop value, reflect it to the state
+    if (this.props.enabled !== prevProps.enabled) {
+      this.setState({ enabled: this.props.enabled })
     }
   }
 
@@ -21,12 +30,5 @@ export default class Toggle extends Component {
         <div className="switch-toggle" />
       </div>
     )
-  }
-
-  componentDidUpdate(prevProps) {
-    // if a parent changes the enabled prop value, reflect it to the state
-    if (this.props.enabled !== prevProps.enabled) {
-      this.setState({ enabled: this.props.enabled })
-    }
   }
 }

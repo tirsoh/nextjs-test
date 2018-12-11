@@ -1,13 +1,12 @@
-import styleSheet from './style.css'
 import marked from 'marked'
+import './style.css'
 
-import css from 'styled-jsx/css'
+import { VerticalTextBlockListProps, withLinkProps } from './types'
 
-const { className } = css.resolve`
-
-`
-
-function VerticalTextBlockList({ data, center_text }) {
+function VerticalTextBlockList({
+  data,
+  center_text
+}: VerticalTextBlockListProps) {
   return (
     <div className="g-vertical-text-block-list">
       <ul className={`list${center_text ? ' centered-text' : ''}`}>
@@ -29,12 +28,11 @@ function VerticalTextBlockList({ data, center_text }) {
           </WithLink>
         ))}
       </ul>
-      <style jsx>{styleSheet}</style>
     </div>
   )
 }
 
-const WithLink = ({ link, children }) =>
+const WithLink = ({ link, children }: withLinkProps) =>
   link ? (
     <li>
       <a className="wrapper" href={link}>

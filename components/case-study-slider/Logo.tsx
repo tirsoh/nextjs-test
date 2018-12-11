@@ -1,6 +1,14 @@
 import Image from '../image'
 
-export default function Logo({ dark, image }) {
+import { ImageInterface } from './types'
+
+export default function Logo({
+  dark,
+  image
+}: {
+  dark?: Boolean
+  image: ImageInterface
+}) {
   let logoType = 'monochrome_logo'
   if (dark) {
     logoType = 'white_logo'

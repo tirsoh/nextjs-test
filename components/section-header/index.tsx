@@ -1,7 +1,13 @@
-import css from './style.css'
+import './style.css'
 import marked from 'marked'
 
-export default function SectionHeader({ headline, description, use_h1 }) {
+import { SectionHeaderProps } from './types'
+
+export default function SectionHeader({
+  headline,
+  description,
+  use_h1
+}: SectionHeaderProps) {
   return (
     <div className="g-section-header">
       {headline &&
