@@ -1,7 +1,7 @@
 import { MDXProvider } from '@mdx-js/tag'
 
 export default (meta: any) => {
-  const DocsComponent: React.SFC = ({ children }) => {
+  const DocsComponent: React.FunctionComponent = ({ children }) => {
     return (
       <MDXProvider>
         <div className="page">
