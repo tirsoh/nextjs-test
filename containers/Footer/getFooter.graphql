@@ -1,27 +1,22 @@
 query Footer {
   globalFooter {
     allProductLinks {
-      title
-      url
+      ...LinkFields
     }
     companyLinks {
-      title
-      url
+      ...LinkFields
     }
     disclaimerLinks {
-      title
-      url
+      ...LinkFields
     }
     partnerLinks {
-      title
-      url
+      ...LinkFields
+    }
+    resourcesLinks {
+      ...LinkFields
     }
     primaryLogo {
       alt
-      url
-    }
-    resourcesLinks {
-      title
       url
     }
     socialLinks {
@@ -35,4 +30,10 @@ query Footer {
       url
     }
   }
+}
+
+fragment LinkFields on LinkRecord {
+  external
+  title
+  url
 }

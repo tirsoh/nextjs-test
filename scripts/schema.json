@@ -64057,21 +64057,21 @@
               "defaultValue": null
             },
             {
-              "name": "showDemoRequest",
-              "description": null,
-              "type": {
-                "kind": "INPUT_OBJECT",
-                "name": "BooleanFilter",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
               "name": "title",
               "description": null,
               "type": {
                 "kind": "INPUT_OBJECT",
                 "name": "StringFilter",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "showDemoRequest",
+              "description": null,
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "BooleanFilter",
                 "ofType": null
               },
               "defaultValue": null
@@ -64323,18 +64323,6 @@
               "deprecationReason": null
             },
             {
-              "name": "showDemoRequest_ASC",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "showDemoRequest_DESC",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "title_ASC",
               "description": null,
               "isDeprecated": false,
@@ -64342,6 +64330,18 @@
             },
             {
               "name": "title_DESC",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "showDemoRequest_ASC",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "showDemoRequest_DESC",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null

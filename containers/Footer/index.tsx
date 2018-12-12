@@ -1,13 +1,10 @@
 import { Component } from 'react'
 import { ChildProps, graphql } from 'react-apollo'
+import { Footer as IFooter } from '../../types/models'
 import getFooterQuery from './getFooter.graphql'
 import './style.css'
 
-interface Response {
-  globalFooter: any
-}
-
-class Footer extends Component<ChildProps<{}, Response>, {}> {
+class Footer extends Component<ChildProps<{}, IFooter>, {}> {
   public render() {
     const { globalFooter } = this.props.data
 
@@ -17,7 +14,7 @@ class Footer extends Component<ChildProps<{}, Response>, {}> {
           <div className="top">
             {/* <NewsletterSignupForm placement="footer" /> */}
             <ul>
-              {globalFooter.socialLinks.map((link: any) => (
+              {globalFooter.socialLinks.map(link => (
                 <li key={link.url}>
                   <a
                     data-ga-footer={`Social | ${link.network.name}`}
@@ -45,7 +42,7 @@ class Footer extends Component<ChildProps<{}, Response>, {}> {
             <div className="products">
               <p>Products</p>
               <ul>
-                {globalFooter.allProductLinks.map((link: any) => (
+                {globalFooter.allProductLinks.map(link => (
                   <li key={link.title}>
                     <a
                       data-ga-footer={`Products | ${link.title}`}
@@ -64,7 +61,7 @@ class Footer extends Component<ChildProps<{}, Response>, {}> {
             <div className="resources">
               <p>Resources</p>
               <ul>
-                {globalFooter.resourcesLinks.map((link: any) => (
+                {globalFooter.resourcesLinks.map(link => (
                   <li key={link.url}>
                     <a
                       data-ga-footer={`Resources | ${link.title}`}
@@ -83,7 +80,7 @@ class Footer extends Component<ChildProps<{}, Response>, {}> {
             <div className="partners">
               <p>Partners</p>
               <ul>
-                {globalFooter.partnerLinks.map((link: any) => (
+                {globalFooter.partnerLinks.map(link => (
                   <li key={link.title}>
                     <a
                       data-ga-footer={`Partners | ${link.title}`}
@@ -102,7 +99,7 @@ class Footer extends Component<ChildProps<{}, Response>, {}> {
             <div className="company">
               <p>Company</p>
               <ul>
-                {globalFooter.companyLinks.map((link: any) => (
+                {globalFooter.companyLinks.map(link => (
                   <li key={link.url}>
                     <a
                       data-ga-footer={`Company | ${link.title}`}
@@ -132,7 +129,7 @@ class Footer extends Component<ChildProps<{}, Response>, {}> {
                   </a>
                 </li>
               )}
-              {globalFooter.disclaimerLinks.map((link: any) => (
+              {globalFooter.disclaimerLinks.map(link => (
                 <li key={link.url}>
                   <a
                     data-ga-footer={`Bottom | ${link.title}`}
@@ -159,6 +156,6 @@ class Footer extends Component<ChildProps<{}, Response>, {}> {
   }
 }
 
-const FooterWithData = graphql<{}, Response>(getFooterQuery)(Footer)
+const FooterWithData = graphql<{}, IFooter>(getFooterQuery)(Footer)
 
 export default FooterWithData
