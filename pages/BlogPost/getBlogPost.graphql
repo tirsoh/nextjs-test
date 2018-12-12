@@ -1,3 +1,5 @@
+#import "../../components/Person/personFields.graphql"
+
 query BlogPost($slug: String!) {
   blogPost(filter: { slug: { eq: $slug } }) {
     id
@@ -5,7 +7,7 @@ query BlogPost($slug: String!) {
     body
     date
     author {
-      id
+      ...PersonFields
     }
   }
 }

@@ -1,7 +1,7 @@
 import { NextContext } from 'next'
 import { Component } from 'react'
 import { ChildProps, graphql } from 'react-apollo'
-import Author from '../../components/Author'
+import Person from '../../components/Person'
 import getBlogPostQuery from './getBlogPost.graphql'
 
 interface InputProps {
@@ -26,7 +26,7 @@ class BlogPost extends Component<ChildProps<InputProps, Response>, {}> {
         <p>{error ? `Error: ${error}` : ''}</p>
         <p>{loading ? 'Loading...' : ''}</p>
         <p>{JSON.stringify(blogPost)}</p>
-        {blogPost && blogPost.author && <Author id={blogPost.author.id} />}
+        {blogPost && blogPost.author && <Person person={blogPost.author} />}
       </div>
     )
   }

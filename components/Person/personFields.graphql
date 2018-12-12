@@ -1,0 +1,7 @@
+fragment PersonFields on PersonRecord {
+  id
+  name
+  photo {
+    url
+  }
+}
