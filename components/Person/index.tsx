@@ -1,11 +1,8 @@
 import { Component } from 'react'
+import { PersonFields } from '../../types/models'
 import personFields from './personFields.graphql'
 
-interface PersonProps {
-  person: any
-}
-
-class Person extends Component<PersonProps> {
+class Person extends Component<{ person: PersonFields }> {
   public static fragments = {
     personFields
   }
