@@ -5,6 +5,7 @@ const path = require('path')
 const getClient = require('./lib/apolloClient')
 const withGraphql = require('next-plugin-graphql')
 const gql = require('graphql-tag')
+const withImages = require('./lib/image-loader')
 
 const config = {
   async exportPathMap() {
@@ -68,5 +69,5 @@ function loadFromDato() {
 }
 
 module.exports = withTypescript(
-  withGraphql(withCSS(withBundleAnalyzer(config)))
+  withGraphql(withCSS(withImages(withBundleAnalyzer(config))))
 )
