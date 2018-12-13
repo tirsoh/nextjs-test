@@ -1,0 +1,94 @@
+query Nav {
+  globalNavigation {
+    companyImageLockup {
+      ...NavLockupFields
+    }
+    companyLinks {
+      ...NavIconNavLinkFields
+    }
+    ctaButton {
+      title
+      url
+    }
+    enterpriseProducts {
+      logo {
+        ...NavImageFields
+      }
+      logoDark {
+        ...NavImageFields
+      }
+      name
+      slug
+      subtitle
+    }
+    navigationLinks {
+      ...NavLinkFields
+    }
+    openSourceImageLockup {
+      ...NavLockupFields
+    }
+    openSourceTools {
+      description
+      logo {
+        ...NavImageFields
+      }
+      logoLight {
+        ...NavImageFields
+      }
+      name
+      website
+    }
+    partnerImageLockup {
+      ...NavLockupFields
+    }
+    partnerLinks {
+      ...NavIconNavLinkFields
+    }
+    primaryLogo {
+      ...NavImageFields
+    }
+    productsImageLockup {
+      ...NavLockupFields
+    }
+    resourceLinks {
+      ...NavIconNavLinkFields
+    }
+    resourcesImageLockup {
+      ...NavLockupFields
+    }
+  }
+}
+
+fragment NavIconNavLinkFields on IconLinkRecord {
+  icon {
+    ...NavImageFields
+  }
+  lightIcon {
+    ...NavImageFields
+  }
+  title
+  url
+}
+
+fragment NavImageFields on FileField {
+  alt
+  format
+  url
+}
+
+fragment NavLinkFields on LinkRecord {
+  external
+  title
+  url
+}
+
+fragment NavLockupFields on ImageLockupRecord {
+  body
+  cta {
+    ...NavLinkFields
+  }
+  image {
+    ...NavImageFields
+  }
+  title
+}

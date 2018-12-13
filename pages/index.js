@@ -9,9 +9,11 @@ import CaseStudySliderData from '../components/case-study-slider/data'
 import VerticalTextBlockList from '../components/vertical-text-block-list'
 import VerticalTextBlockListData from '../components/vertical-text-block-list/data'
 import Footer from '../containers/Footer'
+import Nav from '../components/Nav'
 
 const Index = () => (
   <div>
+    <Nav />
     <h3>Next.js Component Library 🙌🏼</h3>
 
     <ul>
