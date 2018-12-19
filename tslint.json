@@ -1,7 +1,10 @@
 {
   "extends": ["@hashicorp/tslint"],
   "linterOptions": {
-    "exclude": ["node_modules/**"]
+    "exclude": [
+      "node_modules/**",
+      "scripts/generators/component/templates/**"
+    ]
   },
   "rules": {
     "object-literal-sort-keys": false,

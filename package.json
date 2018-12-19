@@ -35,9 +35,11 @@
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-typescript": "^1.1.1",
     "babel-loader": "^8.0.4",
+    "es6-dynamic-template": "^1.0.5",
     "fs-readdir-recursive": "^1.1.0",
     "gray-matter": "^4.0.1",
     "husky": "^1.2.0",
+    "inquirer": "^6.2.1",
     "postcss-preset-env": "^6.2.0",
     "prettier": "^1.15.3",
     "tslint": "^5.11.0",
@@ -52,7 +54,8 @@
     "export": "next export",
     "static": "next build && next export",
     "start": "next start",
-    "lint": "tslint --fix -c tslint.json '**/*{.ts,.tsx}'"
+    "lint": "tslint --fix -c tslint.json '**/*{.ts,.tsx}'",
+    "generate:component": "node ./scripts/generators/component/index.js"
   },
   "husky": {
     "hooks": {
