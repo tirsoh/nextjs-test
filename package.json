@@ -19,7 +19,8 @@
     "react-apollo": "^2.3.2",
     "react-dom": "^16.6.0",
     "slugify": "^1.3.2",
-    "stringify-object": "^3.3.0"
+    "stringify-object": "^3.3.0",
+    "tippy.js": "^3.4.0"
   },
   "devDependencies": {
     "@hashicorp/tsconfig": "^1.0.2",

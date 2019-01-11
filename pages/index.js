@@ -1,6 +1,7 @@
 import '../components/global-styles/playground.css'
 
 import Button from '../components/button'
+import CodeBlock from '../components/code-block'
 import SectionHeader from '../components/section-header'
 import Toggle from '../components/toggle'
 import Image from '../components/image'
@@ -59,6 +60,21 @@ const Index = () => (
       <li>
         <h6>Vertical Text Block List</h6>
         <VerticalTextBlockList data={VerticalTextBlockListData} />
+      </li>
+      <li>
+        <h6>Code Block</h6>
+        <div className='top-buffer'>
+          <CodeBlock prefix='terminal' code='Here is the code block render with terminal prefix' />
+        </div>
+        <div className='top-buffer'>
+          <CodeBlock prefix='dollar' code='Here is the code block render with dollar prefix' />
+        </div>
+        <div className='top-buffer'>
+          <CodeBlock prefix='numbered' code='Here is the code block render with numbered prefix' />
+        </div>
+        <div className='top-buffer'>
+          <CodeBlock code='Here is the code block render with no prefix' />
+        </div>
       </li>
     </ul>
 
